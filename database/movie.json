@@ -1,0 +1,26 @@
+{
+    "title": "Movie",
+    "description": "A movie.",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "Movie name",
+            "type": "string"
+        },
+        "sum": {
+            "description": "Movie description",
+            "type": "string"
+            
+        },
+        "date": {
+            "type": "string"
+        },
+        "genre": {
+            "type": "string"
+        },
+        "director": {
+            "type": "string"
+        }
+    },
+    "required": ["name", "date"]
+   }

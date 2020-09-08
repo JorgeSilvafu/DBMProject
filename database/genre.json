@@ -1,0 +1,17 @@
+{
+    "title": "Genre",
+    "description": "Movie genre.",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "Genre name",
+            "type": "string"
+        },
+        
+        "description": {
+            "type": "string"
+        }
+        
+    },
+    "required": ["name"]
+   }

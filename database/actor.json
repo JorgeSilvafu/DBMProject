@@ -1,0 +1,24 @@
+{
+    "title": "Actor",
+    "description": "An actor.",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "Actor name",
+            "type": "string"
+        },
+        "age": {
+            "description": "Actor age",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 150
+        },
+        "country": {
+            "type": "string"
+        },
+        "sex": {
+            "type": "string"
+        }
+    },
+    "required": ["name", "age"]
+   }

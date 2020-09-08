@@ -1,0 +1,24 @@
+{
+    "title": "Director",
+    "description": "A director of a movie.",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "Director name",
+            "type": "string"
+        },
+        "age": {
+            "description": "Director age",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 150
+        },
+        "country": {
+            "type": "string"
+        },
+        "sex": {
+            "type": "string"
+        }
+    },
+    "required": ["name", "age"]
+   }
