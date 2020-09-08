@@ -1,0 +1,20 @@
+{
+  "name": "dbm_cinema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jorge & Gonçalo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mustache": "^4.0.1",
+    "nodemon": "^2.0.4",
+    "request": "^2.88.2",
+    "require": "^2.4.20"
+  }
+}
