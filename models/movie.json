@@ -10,7 +10,6 @@
         "sum": {
             "description": "Movie description",
             "type": "string"
-            
         },
         "date": {
             "type": "string"
