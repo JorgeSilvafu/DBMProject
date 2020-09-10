@@ -19,13 +19,15 @@ router.get('/movies', function (req, res) {
 
 //rota get - Filmes por nome
 router.get('/movies/:name([a-zA-Z]{3})', function (req, res) {
-    var moviesAux = movies.filter(x => x.name.toLowerCase().includes(req.params.name.toLowerCase())); //com este padrão posso apanhar vários filmes que contenham as 3 letras no nome, por isso devo utilizar o filter para retornar o array de filmes encontrados
-    if (moviesAux.length > 0)
-        res.json(moviesAux);
-    else
+    var movieAux = movies.filter(x => x.name.toLowerCase().includes(req.params.name.toLowerCase())); //com este padrão posso apanhar vários filmes que contenham as 3 letras no nome, por isso devo utilizar o filter para retornar o array de filmes encontrados
+    if (movieAux.length > 0){
+        res.json(movieAux);
+    }
+    else{
         res.status(400).send({
             message: "Não foram encontrados filmes com esse nome"
         });
+    }     
 });
 
 //rota post - Inserir Filme
@@ -36,30 +38,31 @@ router.post('/movies', function (req, res) {
 
 //rota put - Atualizar Filme
 router.put('/movies/:name', function (req, res) {
-    var movie = movies.find(x => x.name === req.params.name); //name é suposto ser único por isso utilizo o find porque assumo que irá ser retornado apenas 1 filme
-    if (movie) {
-        movie.name = req.body.name;
-        movie.sum = req.body.sum;
-        movie.date = req.body.date;
-        movie.genre = req.body.genre;
-        movie.director = req.body.director;
-        res.json(movie);
+    var movieAux = movies.find(x => x.name === req.params.name); //name é suposto ser único por isso utilizo o find porque assumo que irá ser retornado apenas 1 filme
+    if (movieAux) {
+        movieAux.name = req.body.name;
+        movieAux.sum = req.body.sum;
+        movieAux.date = req.body.date;
+        movieAux.genre = req.body.genre;
+        movieAux.director = req.body.director;
+        res.json(movieAux);
     }
-    else
+    else {
         res.status(400).send({
             message: "O Filme não existe"
         });
+    }
 });
 
 //rota delete - Remover Filme
 router.delete('/movies/:name', function (req, res) {
-    var i = movies.findIndex(x => x.name === req.params.name);
-    if (i === -1)
+    var movieAux = movies.findIndex(x => x.name === req.params.name);
+    if (movieAux === -1)
         res.status(400).send({
             message: "O Filme não existe"
         });
     else {
-        movies.splice(i, 1);
+        movies.splice(movieAux, 1);
         res.send({
             message: "Filme removido com sucesso"
         });

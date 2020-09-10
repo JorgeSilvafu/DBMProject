@@ -1,8 +1,7 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
-var routesapi = require('./routes/api.js');
-
+const express = require('express');
+const bodyParser = require('body-parser');
+const api = require('./controllers/api.js');
+const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -23,7 +22,7 @@ app.use(function (req, res, next) {
 });
 
 
-app.use('/api', routesapi);
+app.use('/api', api);
 
 app.get('*', function (req, res) {
     res.send('Erro, URL inválido.');

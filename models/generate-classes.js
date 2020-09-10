@@ -1,16 +1,15 @@
 var fs = require('fs');
 var mustache = require('mustache');
-var schemaDirector = require('./models/Schema-Director.json');
-var schemaActor = require('./models/Schema-Actor.json');
-var schemaMovie = require('./models/Schema-Movie.json');
-var schemaGenre = require('./models/Schema-Genre.json');
+var schemaDirector = require('./Schema-Director.json');
+var schemaActor = require('./Schema-Actor.json');
+var schemaMovie = require('./Schema-Movie.json');
+var schemaGenre = require('./Schema-Genre.json');
 
 var template =
-    `
-const database = require('./database/sqlite-wrapper.js')('./database/{{dbname}}');
-const jsf = require('json-schema-faker')
+`const database = require('../database/sqlite-wrapper.js')('../database/{{dbname}}');
+const schema = require("./Schema-{{classTitle}}.json");
+const jsf = require('json-schema-faker');
 const faker = require('faker');
-const schema = require("./models/Schema-{{classTitle}}.json");
 jsf.extend('faker', () => { return faker });
 
 class {{classTitle}} {
@@ -37,7 +36,7 @@ class {{classTitle}} {
     }
 
     static delete(callback) {
-        database.run("DELETE FROM {{tableName}} WHERE {{primaryKey}} = ?", [{{primaryKey}}], callback));
+        database.run("DELETE FROM {{tableName}} WHERE {{primaryKey}} = ?", [{{primaryKey}}], callback);
     }
 
     save(callback) {
@@ -48,8 +47,7 @@ class {{classTitle}} {
     }
 }
 
-module.exports = {{classTitle}};
-`;
+module.exports = {{classTitle}};`;
 
 
 //Generate class Director

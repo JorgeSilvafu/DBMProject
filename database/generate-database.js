@@ -12,8 +12,7 @@ CREATE TABLE IF NOT EXISTS {{tableName}} (
     {{#tableColumns}}
     {{name}} {{type}} {{required}} {{unique}} {{constraint}}{{#needComma}},{{/needComma}}
     {{/tableColumns}}
-)
-`;
+)`;
 
 //Conversão de tipos
 let types = {
