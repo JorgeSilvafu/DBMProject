@@ -18,7 +18,6 @@ app.use(function (req, res, next) {
     } else {
         urls[req.url] = 1;
     }
-
     console.log(urls);
     next();
 });

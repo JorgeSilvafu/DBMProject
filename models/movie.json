@@ -15,10 +15,12 @@
             "type": "string"
         },
         "genre": {
-            "type": "string"
+            "type": "string",
+            "foreignkey": true
         },
         "director": {
-            "type": "string"
+            "type": "string",
+            "foreignkey": true
         }
     },
     "required": ["name", "date"]
