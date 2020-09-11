@@ -30,6 +30,6 @@
     },
     {
         "model": "Director",
-        "relation": "M-1"
+        "relation": "M-M"
     }]
 }

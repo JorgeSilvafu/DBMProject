@@ -1,9 +1,9 @@
 var mustache = require('mustache');
 const sqlite3 = require('sqlite3').verbose();
-const schemaDirector = require('../models/Director.json');
-const schemaActor = require('../models/Actor.json');
-const schemaMovie = require('../models/Movie.json');
-const schemaGenre = require('../models/Genre.json');
+const schemaDirector = require('../.vscode/Schema-Director.json');
+const schemaActor = require('../.vscode/Schema-Actor.json');
+const schemaMovie = require('../.vscode/Schema-Movie.json');
+const schemaGenre = require('../.vscode/Schema-Genre.json');
 
 //Criação do template
 let template = `
@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS {{tableName}} (
     {{name}} {{type}} {{required}} {{unique}} {{constraint}}{{#needComma}},{{/needComma}}
     {{/tableColumns}}
 )
-ALTER TABLE {{tableName}} ADD COLUMN {{relatedTableNameLowerCase}}_{{primaryKey}} INTEGER REFERENCES {{relatedTableName}}({{primaryKey}});
 `;
 
 //Conversão de tipos
@@ -24,9 +23,9 @@ let types = {
 };
 
 //Director
-let arrayDirector = [];
+let columnsDirector = [];
 Object.keys(schemaDirector.properties).forEach((element, i, aux) => {
-    arrayDirector.push({
+    columnsDirector.push({
         name: element,
         type: types[schemaDirector.properties[element].type],
         required: schemaDirector.required.find((el) => {
@@ -39,14 +38,14 @@ Object.keys(schemaDirector.properties).forEach((element, i, aux) => {
 });
 let viewDirector = {
     tableName: schemaDirector.title,
-    tableColumns: arrayDirector
+    tableColumns: columnsDirector
 };
 let outputDirector = mustache.render(template, viewDirector);
 
 //Actor
-let arrayActor = [];
+let columnsActor = [];
 Object.keys(schemaActor.properties).forEach((element, i, aux) => {
-    arrayActor.push({
+    columnsActor.push({
         name: element,
         type: types[schemaActor.properties[element].type],
         required: schemaActor.required.find((el) => {
@@ -59,14 +58,14 @@ Object.keys(schemaActor.properties).forEach((element, i, aux) => {
 });
 let viewActor = {
     tableName: schemaActor.title,
-    tableColumns: arrayActor
+    tableColumns: columnsActor
 };
 let outputActor = mustache.render(template, viewActor);
 
 //Filme
-let arrayMovie = [];
+let columnsMovie = [];
 Object.keys(schemaMovie.properties).forEach((element, i, aux) => {
-    arrayMovie.push({
+    columnsMovie.push({
         name: element,
         type: types[schemaMovie.properties[element].type],
         required: schemaMovie.required.find((el) => {
@@ -79,17 +78,14 @@ Object.keys(schemaMovie.properties).forEach((element, i, aux) => {
 });
 let viewMovie = {
     tableName: schemaMovie.title,
-    tableColumns: arrayMovie,
-    relatedTableNameLowerCase: schemaMovie.references.forEach().model,
-    primaryKey: 'id',
-    relatedTableName: 
+    tableColumns: columnsMovie
 };
 let outputMovie = mustache.render(template, viewMovie);
 
 //Género
-let arrayGenre = [];
+let columnsGenre = [];
 Object.keys(schemaGenre.properties).forEach((element, i, aux) => {
-    arrayGenre.push({
+    columnsGenre.push({
         name: element,
         type: types[schemaGenre.properties[element].type],
         required: schemaGenre.required.find((el) => {
@@ -102,7 +98,7 @@ Object.keys(schemaGenre.properties).forEach((element, i, aux) => {
 });
 let viewGenre = {
     tableName: schemaGenre.title,
-    tableColumns: arrayGenre
+    tableColumns: columnsGenre
 };
 let outputGenre = mustache.render(template, viewGenre);
 
