@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Director = require('../models/Director.js');
+var Director = require('../Models/Director.js');
 
 router.post('/Director', function (req, res) {
     let obj = Object.assign(new Director(), req.body);

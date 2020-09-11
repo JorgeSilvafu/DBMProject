@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Actor = require('../models/Actor.js');
+var Actor = require('../Models/Actor.js');
 
 router.post('/Actor', function (req, res) {
     let obj = Object.assign(new Actor(), req.body);

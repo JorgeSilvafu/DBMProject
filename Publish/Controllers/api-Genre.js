@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Genre = require('../models/Genre.js');
+var Genre = require('../Models/Genre.js');
 
 router.post('/Genre', function (req, res) {
     let obj = Object.assign(new Genre(), req.body);

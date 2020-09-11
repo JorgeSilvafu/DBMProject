@@ -1,8 +1,23 @@
 {
-    // Use IntelliSense to learn about possible Node.js debug attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
+    "schemas": [
+        {
+        "name": "Movie",
+        "path": "../schemas/Schema-Movie.json"
+        },
+        {
+        "name": "Genre",
+        "path": "../schemas/Schema-Genre.json"
+        },
+        {
+        "name": "Movie",
+        "path": "../schemas/Schema-Actor.json"
+        },
+        {
+        "name": "Movie",
+        "path": "../schemas/Schema-Director.json"
+        }
+    ],
     "configurations": [
         {
             "type": "node",

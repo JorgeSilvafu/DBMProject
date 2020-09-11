@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Movie = require('../models/Movie.js');
+var Movie = require('../Models/Movie.js');
 
 router.post('/Movie', function (req, res) {
     let obj = Object.assign(new Movie(), req.body);

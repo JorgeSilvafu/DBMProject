@@ -1,6 +1,6 @@
 var mustache = require('mustache');
-const schemaMovie = require('../.vscode/Schema-Movie.json');
-const schemaDirector = require('../.vscode/Schema-Director.json');
+const schemaMovie = require('../Schemas/Schema-Movie.json');
+const schemaDirector = require('../Schemas/Schema-Director.json');
 
 let templateOneToMany = 
 `

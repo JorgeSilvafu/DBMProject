@@ -1,13 +1,13 @@
 var fs = require('fs');
 var mustache = require('mustache');
-var schemaDirector = require('../.vscode/Schema-Director.json');
-var schemaActor = require('../.vscode/Schema-Actor.json');
-var schemaMovie = require('../.vscode/Schema-Movie.json');
-var schemaGenre = require('../.vscode/Schema-Genre.json');
+var schemaDirector = require('../schemas/Schema-Director.json');
+var schemaActor = require('../schemas/Schema-Actor.json');
+var schemaMovie = require('../schemas/Schema-Movie.json');
+var schemaGenre = require('../schemas/Schema-Genre.json');
 
 var template =
 `const database = require('../database/sqlite-wrapper.js')('../database/{{dbname}}');
-const schema = require("./Schema-{{classTitle}}.json");
+const schema = require("../schemas/Schema-{{classTitle}}.json");
 const jsf = require('json-schema-faker');
 const faker = require('faker');
 jsf.extend('faker', () => { return faker });

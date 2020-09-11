@@ -1,9 +1,9 @@
 var mustache = require('mustache');
 const sqlite3 = require('sqlite3').verbose();
-const schemaDirector = require('../.vscode/Schema-Director.json');
-const schemaActor = require('../.vscode/Schema-Actor.json');
-const schemaMovie = require('../.vscode/Schema-Movie.json');
-const schemaGenre = require('../.vscode/Schema-Genre.json');
+const schemaDirector = require('../Schemas/Schema-Director.json');
+const schemaActor = require('../Schemas/Schema-Actor.json');
+const schemaMovie = require('../Schemas/Schema-Movie.json');
+const schemaGenre = require('../Schemas/Schema-Genre.json');
 
 //Criação do template
 let template = `
