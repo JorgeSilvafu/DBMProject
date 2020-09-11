@@ -12,7 +12,7 @@ app.get('*', function (req, res) {
     res.send('Erro, URL inválido.');
 });
 
-var server = app.listen({{port}}, function () {
+var server = app.listen(8081, function () {
     var host = server.address().address === "::" ? "localhost" : server.address().address
     var port = server.address().port
 

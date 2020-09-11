@@ -1,5 +1,5 @@
-const database = require('../database/sqlite-wrapper.js')('../database/cinema.db');
-const schema = require("../schemas/Schema-Director.json");
+const database = require('../../database/sqlite-wrapper.js')('../../Database/cinema.db');
+const schema = require("../../schemas/Schema-Director.json");
 const jsf = require('json-schema-faker');
 const faker = require('faker');
 jsf.extend('faker', () => { return faker });

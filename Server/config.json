@@ -10,11 +10,11 @@
         "path": "../schemas/Schema-Genre.json"
         },
         {
-        "name": "Movie",
+        "name": "Actor",
         "path": "../schemas/Schema-Actor.json"
         },
         {
-        "name": "Movie",
+        "name": "Director",
         "path": "../schemas/Schema-Director.json"
         }
     ],
