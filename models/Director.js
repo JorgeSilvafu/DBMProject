@@ -33,7 +33,7 @@ class Director {
 
     save(callback) {
         if(this.id)
-            database.run("UPDATE Director SET ?,?,?,? WHERE id = ?", [this.name,this.age,this.country,this.sex], callback);
+            database.run("UPDATE Director SET name = ?,age = ?,country = ?,sex = ? WHERE id = ?", [this.name,this.age,this.country,this.sex], callback);
         else
             database.run("INSERT INTO Director (name,age,country,sex) VALUES (?,?,?,?)", [this.name,this.age,this.country,this.sex], callback);        
     }

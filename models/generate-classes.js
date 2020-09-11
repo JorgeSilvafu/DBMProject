@@ -1,9 +1,9 @@
 var fs = require('fs');
 var mustache = require('mustache');
-var schemaDirector = require('./Schema-Director.json');
-var schemaActor = require('./Schema-Actor.json');
-var schemaMovie = require('./Schema-Movie.json');
-var schemaGenre = require('./Schema-Genre.json');
+var schemaDirector = require('../.vscode/Schema-Director.json');
+var schemaActor = require('../.vscode/Schema-Actor.json');
+var schemaMovie = require('../.vscode/Schema-Movie.json');
+var schemaGenre = require('../.vscode/Schema-Genre.json');
 
 var template =
 `const database = require('../database/sqlite-wrapper.js')('../database/{{dbname}}');
@@ -41,7 +41,7 @@ class {{classTitle}} {
 
     save(callback) {
         if(this.{{primaryKey}})
-            database.run("UPDATE {{tableName}} SET {{{valuesParams}}} WHERE {{primaryKey}} = ?", [{{thisPropreties}}], callback);
+            database.run("UPDATE {{tableName}} SET {{{updateValuesParams}}} WHERE {{primaryKey}} = ?", [{{thisPropreties}}], callback);
         else
             database.run("INSERT INTO {{tableName}} ({{columns}}) VALUES ({{valuesParams}})", [{{thisPropreties}}], callback);        
     }
@@ -72,7 +72,8 @@ var viewDirector = {
     tableName: schemaDirector.title,
     columns: Object.keys(schemaDirector.properties).join(),
     valuesParams: classConstructorDirector.map(obj => '?').join(),
-    thisPropreties: classConstructorDirector.map(obj => 'this.' + obj.name).join()
+    thisPropreties: classConstructorDirector.map(obj => 'this.' + obj.name).join(),
+    updateValuesParams: classConstructorDirector.map(obj => obj.name + ' = ?').join()
 };
 var outputDirector = mustache.render(template, viewDirector);
 fs.writeFileSync(`./${schemaDirector.title}.js`, outputDirector);
@@ -101,6 +102,7 @@ var viewActor = {
     columns: Object.keys(schemaActor.properties).join(),
     valuesParams: classConstructorActor.map(obj => '?').join(),
     thisPropreties: classConstructorActor.map(obj => 'this.' + obj.name).join(),
+    updateValuesParams: classConstructorActor.map(obj => obj.name + ' = ?').join()
 };
 var outputActor = mustache.render(template, viewActor);
 fs.writeFileSync(`./${schemaActor.title}.js`, outputActor);
@@ -129,6 +131,7 @@ var viewMovie = {
     columns: Object.keys(schemaMovie.properties).join(),
     valuesParams: classConstructorMovie.map(obj => '?').join(),
     thisPropreties: classConstructorMovie.map(obj => 'this.' + obj.name).join(),
+    updateValuesParams: classConstructorMovie.map(obj => obj.name + ' = ?').join()
 };
 var outputMovie = mustache.render(template, viewMovie);
 fs.writeFileSync(`./${schemaMovie.title}.js`, outputMovie);
@@ -157,6 +160,7 @@ var viewGenre = {
     columns: Object.keys(schemaGenre.properties).join(),
     valuesParams: classConstructorGenre.map(obj => '?').join(),
     thisPropreties: classConstructorGenre.map(obj => 'this.' + obj.name).join(),
+    updateValuesParams: classConstructorGenre.map(obj => obj.name + ' = ?').join()
 };
 var outputGenre = mustache.render(template, viewGenre);
 fs.writeFileSync(`./${schemaGenre.title}.js`, outputGenre);

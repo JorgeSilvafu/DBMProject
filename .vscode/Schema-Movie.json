@@ -23,5 +23,13 @@
             "foreignkey": true
         }
     },
-    "required": ["name", "date"]
-   }
+    "required": ["name", "date"],
+    "references": [{
+        "model": "Genre",
+        "relation": "1-M"
+    },
+    {
+        "model": "Director",
+        "relation": "M-1"
+    }]
+}

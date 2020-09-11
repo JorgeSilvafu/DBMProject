@@ -33,7 +33,7 @@ class Actor {
 
     save(callback) {
         if(this.id)
-            database.run("UPDATE Actor SET ?,?,?,? WHERE id = ?", [this.name,this.age,this.country,this.sex], callback);
+            database.run("UPDATE Actor SET name = ?,age = ?,country = ?,sex = ? WHERE id = ?", [this.name,this.age,this.country,this.sex], callback);
         else
             database.run("INSERT INTO Actor (name,age,country,sex) VALUES (?,?,?,?)", [this.name,this.age,this.country,this.sex], callback);        
     }

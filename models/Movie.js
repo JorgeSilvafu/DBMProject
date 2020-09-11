@@ -35,7 +35,7 @@ class Movie {
 
     save(callback) {
         if(this.id)
-            database.run("UPDATE Movie SET ?,?,?,?,? WHERE id = ?", [this.name,this.sum,this.date,this.genre,this.director], callback);
+            database.run("UPDATE Movie SET name = ?,sum = ?,date = ?,genre = ?,director = ? WHERE id = ?", [this.name,this.sum,this.date,this.genre,this.director], callback);
         else
             database.run("INSERT INTO Movie (name,sum,date,genre,director) VALUES (?,?,?,?,?)", [this.name,this.sum,this.date,this.genre,this.director], callback);        
     }

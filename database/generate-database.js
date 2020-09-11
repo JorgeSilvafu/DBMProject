@@ -1,9 +1,9 @@
 var mustache = require('mustache');
 const sqlite3 = require('sqlite3').verbose();
-const schemaDirector = require('../models/director.json');
-const schemaActor = require('../models/actor.json');
-const schemaMovie = require('../models/movie.json');
-const schemaGenre = require('../models/genre.json');
+const schemaDirector = require('../models/Director.json');
+const schemaActor = require('../models/Actor.json');
+const schemaMovie = require('../models/Movie.json');
+const schemaGenre = require('../models/Genre.json');
 
 //Criação do template
 let template = `
@@ -20,13 +20,6 @@ let types = {
     number: "REAL",
     string: "TEXT"
 };
-
-//Conversão de constraints
-let constraintObj = {
-    minimum: ">=",
-    maximum: "<="
-};
-
 
 //Director
 let arrayDirector = [];

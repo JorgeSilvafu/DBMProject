@@ -56,13 +56,17 @@ router.delete('/{{name}}/:id', function (req, res) {
 module.exports = router;
 {{/schemas}}`;
 
-let view = {
-    schemas: [
-        {
-            name: "Director" //Tem de se ir buscar o name aos schemas do config.json
-        }
-    ]
-}
-let output = mustache.render(template, view);
+let arr = ["Director", "Actor", "Movie", "Genre"];
 
-fs.writeFileSync('api.js', output);
+arr.forEach((element)  => {
+    let view = {
+        schemas: [
+            {
+                name: element //Tem de se ir buscar o name aos schemas do config.json
+            }
+        ]
+    }
+    let output = mustache.render(template, view);    
+    
+    fs.writeFileSync(`./api-${element}.js`, output);
+});

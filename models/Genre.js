@@ -30,7 +30,7 @@ class Genre {
 
     save(callback) {
         if(this.id)
-            database.run("UPDATE Genre SET ?,? WHERE id = ?", [this.name,this.description], callback);
+            database.run("UPDATE Genre SET name = ?,description = ? WHERE id = ?", [this.name,this.description], callback);
         else
             database.run("INSERT INTO Genre (name,description) VALUES (?,?)", [this.name,this.description], callback);        
     }
