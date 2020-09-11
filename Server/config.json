@@ -18,6 +18,10 @@
         "path": "../schemas/Schema-Director.json"
         }
     ],
+    "database": {
+        "name": "cinema.db",
+        "path": "../database/cinema.db"
+    },
     "configurations": [
         {
             "type": "node",

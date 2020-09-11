@@ -1,8 +1,4 @@
-var fs = require('fs');
-var mustache = require('mustache');
-
-let templateBackOffice =
-`const express = require('express');
+const express = require('express');
 var router = express.Router();
 
 {{#schemas}}
@@ -25,15 +21,3 @@ router.get('/{{title}}', (req,res) => {
 {{/schemas}}
 
 module.exports = router;
-`
-
-let view = {
-    schemas: [
-        {
-            title: "Director"
-        }
-    ]
-}
-
-let output = mustache.render(templateBackOffice, view);
-fs.writeFileSync('./backoffice.js', output);

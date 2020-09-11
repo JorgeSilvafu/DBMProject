@@ -1,13 +1,13 @@
 const express = require('express');
 var router = express.Router();
 
-var Director = require('../models/Director.js');
+var Movie = require('../models/Movie.js');
 
-router.get('/Director', (req,res) => {
-    Director.all((rows) => {
+router.get('/Movie', (req,res) => {
+    Movie.all((rows) => {
         res.render('list', {
-            title : 'Director',
-            columns: Object.keys(new Director()),
+            title : 'Movie',
+            columns: Object.keys(new Movie()),
             rows: rows.map(obj => {
                 return{
                     properties: Object.keys(obj).map(key => obj[key])
