@@ -2,7 +2,8 @@ const express = require('express');
 var router = express.Router();
 
 {{#schemas}}
-var {{title}} = require('../models/{{title}}.js');
+
+var {{title}} = require('../Models/{{title}}.js');
 
 router.get('/{{title}}', (req,res) => {
     {{title}}.all((rows) => {

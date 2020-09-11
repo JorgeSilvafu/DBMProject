@@ -1,12 +1,8 @@
-var fs = require('fs');
-var mustache = require('mustache');
-var config = require('../../server/config.json');
-
-var template =
-`var express = require('express');
+var express = require('express');
 var router = express.Router();
 
 {{#schemas}}
+
 var {{name}} = require('../Models/{{name}}.js');
 
 router.post('/{{name}}', function (req, res) {
@@ -53,19 +49,6 @@ router.delete('/{{name}}/:id', function (req, res) {
         {{name}}Aux.delete(msg => res.json(msg));
     }
 });
+{{/schemas}}
 
 module.exports = router;
-{{/schemas}}`;
-
-config.schemas.forEach((element) => {
-    let view = {
-        schemas: [
-            {
-                name: element.name //Tem de se ir buscar o name aos schemas do config.json
-            }
-        ]
-    }
-    let output = mustache.render(template, view);    
-    
-    fs.writeFileSync(`./api-${element.name}.js`, output);
-});

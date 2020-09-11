@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var backoffice = require('../Publish/Controllers/backoffice.js');
+var api = require('../Publish/Controllers/api.js');
 var mustacheExpress = require('mustache-express');
 
 //Faz o parse dos pedidos com content-type - application/json
@@ -21,6 +22,7 @@ app.get('*', function (req, res) {
 
 //Responder aos clientes para as rotas previstas
 app.use('/backoffice', backoffice);
+app.use('/api', api);
 
 //Inicialização do servidor na port 8081
 var server = app.listen(8081, function () {
