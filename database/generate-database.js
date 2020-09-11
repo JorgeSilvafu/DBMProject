@@ -12,7 +12,9 @@ CREATE TABLE IF NOT EXISTS {{tableName}} (
     {{#tableColumns}}
     {{name}} {{type}} {{required}} {{unique}} {{constraint}}{{#needComma}},{{/needComma}}
     {{/tableColumns}}
-)`;
+)
+ALTER TABLE {{tableName}} ADD COLUMN {{relatedTableNameLowerCase}}_{{primaryKey}} INTEGER REFERENCES {{relatedTableName}}({{primaryKey}});
+`;
 
 //Conversão de tipos
 let types = {
@@ -77,7 +79,10 @@ Object.keys(schemaMovie.properties).forEach((element, i, aux) => {
 });
 let viewMovie = {
     tableName: schemaMovie.title,
-    tableColumns: arrayMovie
+    tableColumns: arrayMovie,
+    relatedTableNameLowerCase: schemaMovie.references.forEach().model,
+    primaryKey: 'id',
+    relatedTableName: 
 };
 let outputMovie = mustache.render(template, viewMovie);
 
